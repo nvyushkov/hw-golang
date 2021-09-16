@@ -1,4 +1,4 @@
-module github.com/nvyushkov/hs-golang/hw02_unpack_string
+module github.com/nvyushkov/hw-golang/hw02_unpack_string
 
 go 1.16
 
