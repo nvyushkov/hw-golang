@@ -38,9 +38,9 @@ func TestUnpackNoLatinString(t *testing.T) {
 		input string
 		want  string
 	}{
-		{input: "+2--0", want: "++-"},
-		{input: "бввс1", want: "бввс"},
-		{input: "%3", want: "%%%"},
+		{input: "+2--0*", want: "++-*"},
+		{input: "бвв1с", want: "бввс"},
+		{input: "%3%0%", want: "%%%%"},
 	}
 
 	for _, r := range cyrillicStrings {
