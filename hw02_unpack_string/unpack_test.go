@@ -33,6 +33,26 @@ func TestUnpack(t *testing.T) {
 	}
 }
 
+func TestUnpackNoLatinString(t *testing.T) {
+	cyrillicStrings := []struct {
+		input string
+		want  string
+	}{
+		{input: "+2--0*", want: "++-*"},
+		{input: "бвв1с", want: "бввс"},
+		{input: "%3%0%", want: "%%%%"},
+	}
+
+	for _, r := range cyrillicStrings {
+		r := r
+		t.Run(r.input, func(t *testing.T) {
+			res, err := Unpack(r.input)
+			require.NoError(t, err)
+			require.Equal(t, r.want, res)
+		})
+	}
+}
+
 func TestUnpackInvalidString(t *testing.T) {
 	invalidStrings := []string{"3abc", "45", "aaa10b"}
 	for _, tc := range invalidStrings {
