@@ -18,7 +18,6 @@ func Top10(text string) []string {
 	var result []string
 
 	for _, wordOutside := range words {
-
 		isPast := false
 		for _, w := range wordsList {
 			if w.word == wordOutside {
