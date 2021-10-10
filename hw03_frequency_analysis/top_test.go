@@ -43,6 +43,9 @@ var text = `Как видите, он  спускается  по  лестни�
 	посидеть у огня и послушать какую-нибудь интересную сказку.
 		В этот вечер...`
 
+var chars = `a 0 Z 0 2 1 & A f a s d i f j A s f H g a Z g p o Z r a
+	' j v ' r j v d ] [ e & q - q q q Q`
+
 func TestTop10(t *testing.T) {
 	t.Run("no words in empty string", func(t *testing.T) {
 		require.Len(t, Top10(""), 0)
@@ -79,4 +82,9 @@ func TestTop10(t *testing.T) {
 			require.Equal(t, expected, Top10(text))
 		}
 	})
+}
+
+func TestSingleTop(t *testing.T) {
+	expected := []string{"a", "q", "Z", "f", "j", "&", "'", "0", "A", "d"}
+	require.Equal(t, expected, Top10(chars))
 }
