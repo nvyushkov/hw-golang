@@ -50,8 +50,26 @@ func TestCache(t *testing.T) {
 	})
 
 	t.Run("purge logic", func(t *testing.T) {
-		// Write me
+		c := NewCache(3)
+
+		c.Set("a", 1)
+		c.Set("b", 2)
+		c.Set("c", 3)
+		c.Set("d", 4)
+
+		val, ok := c.Get("a")
+		require.False(t, ok)
+		require.Nil(t, val)
+
+		c.Set("b", 20)
+		c.Set("c", 30)
+		c.Set("e", 5)
+
+		val, ok = c.Get("d")
+		require.False(t, ok)
+		require.Nil(t, val)
 	})
+
 }
 
 func TestCacheMultithreading(t *testing.T) {
